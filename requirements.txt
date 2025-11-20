@@ -1,13 +1,8 @@
-datasets==3.3.2
-aiohttp==3.12.15
-huggingface-hub==0.34.4
-numpy==2.3.3
-packaging==25.0
-pandas==2.3.2
-setuptools==80.9.0
-six==1.17.0
-tiktoken==0.11.0
-torch==2.8.0
-tqdm==4.67.1
-tzdata==2025.2
-wandb==0.21.4
+huggingface-hub
+numpy
+# torch 2.10.0 prerelease solves some mps compilation issues
+# cuda 12.8: pip install --pre torch --index-url https://download.pytorch.org/whl/nightly/cu128  --upgrade
+# mps: pip install --pre torch --index-url https://download.pytorch.org/whl/nightly  --upgrade
+torch # 2.9.0
+wandb
+chardet
