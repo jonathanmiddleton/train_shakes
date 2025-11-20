@@ -41,7 +41,7 @@ min_lr *= s_lr
 # betas: roughly 0.9=last 10 steps, 0.99=last 100 steps, ...
 beta1 = 0.9  # controls how quickly we react to changes in the gradient based on prior steps
 beta2 = 0.99 # controls how much we smooth the gradient based on prior steps
-weight_decay = 0  # reduces overfitting by smoothing weights
+weight_decay = 0  # reduces overfitting by smoothing weights (Karpathy used 1e-1, 0=None)
 grad_clip = 0.0 # rescales (smooths) gradients above the normed threshold, or disable if == 0.0, (Karpathy used 1.0)
 
 #--- Setup ---#
