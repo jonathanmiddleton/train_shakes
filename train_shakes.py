@@ -42,7 +42,7 @@ min_lr *= s_lr
 beta1 = 0.9  # controls how quickly we react to changes in the gradient based on prior steps
 beta2 = 0.99 # controls how much we smooth the gradient based on prior steps
 weight_decay = 0  # reduces overfitting by smoothing weights (Karpathy used 1e-1, 0=None)
-grad_clip = 0.0 # rescales (smooths) gradients above the normed threshold, or disable if == 0.0, (Karpathy used 1.0)
+grad_clip = 1.0 # rescales (smooths) gradients above the normed threshold, or disable if == 0.0, (Karpathy used 1.0)
 
 #--- Setup ---#
 config_keys = [k for k,v in globals().items() if not k.startswith('_') and isinstance(v, (int, float, bool, str, list))]
