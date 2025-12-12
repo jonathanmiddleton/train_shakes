@@ -21,28 +21,28 @@ tied_embeddings = True  # whether to use the embedding weights for the output la
 dataset = 'shakespeare_char'
 device = 'cuda' if torch.cuda.is_available() else 'mps'
 torch_compile = True
-max_iters = 5000
+max_iters = 3500
 gradient_accumulation_steps = 1
 dtype='bfloat16' # numeric data type we'll use with autocast, though many ops will end up cast to fp16 on mps
 batch_size = 64  # number of independent sequences to process in parallel, gradients averaged across all batches
 block_size = 256 # max sequence length
 vocab_size = 65 # I think it should be 64 but was 65 when I tested
-dropout = 0.2  # N% chance any neuron output is set to zero during training, prevents overfitting
+dropout = 0.0  # N% chance any neuron output is set to zero during training, prevents overfitting
 
 #--- Optimizer ---#
 decay_lr = True # whether to decay the learning rate
-decay_lr_schedule = 'cosine' # linear or cosine, karpathy used cosine
-lr_decay_iters = 5000
+decay_lr_schedule = 'linear' # linear or cosine, karpathy used cosine
+lr_decay_iters = 1500
 max_lr = 1e-3 # with baby networks can afford to go a bit higher
 min_lr = 1e-4 # max_lr / 10 usually
-s_lr = 1.0  # testing convenience to scale both learning rates
+s_lr = 1.1  # testing convenience to scale both learning rates
 max_lr *= s_lr
 min_lr *= s_lr
 # betas: roughly 0.9=last 10 steps, 0.99=last 100 steps, ...
 beta1 = 0.9  # controls how quickly we react to changes in the gradient based on prior steps
-beta2 = 0.99 # controls how much we smooth the gradient based on prior steps
+beta2 = 0.999 # controls how much we smooth the gradient based on prior steps
 weight_decay = 0  # reduces overfitting by smoothing weights (Karpathy used 1e-1, 0=None)
-grad_clip = 1.0 # rescales (smooths) gradients above the normed threshold, or disable if == 0.0, (Karpathy used 1.0)
+grad_clip = 0.0 # rescales (smooths) gradients above the normed threshold, or disable if == 0.0, (Karpathy used 1.0)
 
 #--- Setup ---#
 config_keys = [k for k,v in globals().items() if not k.startswith('_') and isinstance(v, (int, float, bool, str, list))]
