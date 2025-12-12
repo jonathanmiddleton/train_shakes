@@ -5,7 +5,7 @@ from model import GPTConfig, GPT
 import wandb as _wandb
 
 #--- Logging ---#
-log_interval = 1 # note: this will also trigger host/device sync but you wont notice perf overhead in this case
+log_interval = 1 # note: triggers device/cpu sync but if not 1 then may miss loss <0.1 during a step
 wandb_log = True # optional W&B logging
 wandb_project = 'shakespeare-char'
 wandb_group = 'debug2'
